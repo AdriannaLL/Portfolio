@@ -4,7 +4,7 @@
 
 const projects = [{
         title: "FSC Valet",
-        tagline: "Le parking des étoiles",
+        tagline: "Campus parking, simplified",
         description: "Desktop valet parking management app developed as a team project for Farmingdale State College using Java, JavaFX, Spring Boot, Firebase, CSS, Maven, GitHub, and Figma. Focused on frontend development, UI design, navigation, styling, original hand-drawn visual assets and logos, testing, debugging, and integration.",
         tags: ["Java", "JavaFX", "Spring Boot", "Firebase", "Figma"],
         image: "",
@@ -13,17 +13,17 @@ const projects = [{
     },
     {
         title: "EZ Healthcare",
-        tagline: "La santé en velours doux",
-        description: "Developing a user-friendly healthcare management app for older adults and less tech-savvy users, with a focus on accessibility, simple navigation, readable interfaces, and greater independence in managing health information.",
-        tags: ["UX", "Programming", "Documentation"],
+        tagline: "Health management made easy",
+        description: "Developing a user-friendly healthcare management app for older adults, people with disabilities, and less tech-savvy users, with a focus on accessibility, simple navigation, readable interfaces, and greater independence in managing health information.",
+        tags: ["UX", "Programming", "Documentation", "React Native", "Expo", "Android Studio", "Figma"],
         image: "",
         live: "",
         code: ""
     },
     {
         title: "Aligned",
-        tagline: "Les étoiles en ligne droite",
-        description: "Lorem de la lune, les jardins du matin chantent sous le ciel bordeaux et les fenêtres dorment doucement.",
+        tagline: "Faith and growth in one place",
+        description: "A faith-based mobile app for daily inspiration, goals, and personal growth. Built with React Native and Expo.",
         tags: ["React Native", "Expo", "Firebase"],
         image: "",
         live: "",
@@ -31,8 +31,8 @@ const projects = [{
     },
     {
         title: "Chopped",
-        tagline: "Le cœur coupé en minuit",
-        description: "Lorem de la rose, les petits secrets dansent dans le café noir et les miroirs rient en silence.",
+        tagline: "Just for the fun of it",
+        description: "No big mission, just a reminder not to take life too seriously. Built with React Native.",
         tags: ["React Native", "Expo", "Firebase"],
         image: "",
         live: "",
@@ -113,7 +113,7 @@ function openPopup(index) {
         links += `<a href="${project.code}" target="_blank" class="button outline">View Code</a>`;
     }
     if (links === "") {
-        links = `<p class="soon">Bientôt, sous la lune ✦</p>`;
+        links = `<p class="soon">Links coming soon ✦</p>`;
     }
     document.getElementById("popupLinks").innerHTML = links;
 
