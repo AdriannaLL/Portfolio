@@ -1,6 +1,4 @@
-// ---------- projects ----------
-// to add a project, copy one { } block and change the info
-// image: put the picture path here, like "Images/fscvalet.png"
+// ---------- projects section ----------
 
 const projects = [{
         title: "FSC Valet",
@@ -91,7 +89,7 @@ for (let i = 0; i < projects.length; i++) {
 }
 
 
-// ---------- popup ----------
+// Project Popup 
 
 const popup = document.getElementById("popup");
 
@@ -139,7 +137,7 @@ document.addEventListener("keydown", function(event) {
 });
 
 
-// ---------- tech carousel ----------
+//  tech carousel 
 
 const carousel = document.getElementById("techCarousel");
 
