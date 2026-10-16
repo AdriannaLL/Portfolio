@@ -1,0 +1,142 @@
+/* 
+   shaders.css
+   Visual effects: velvet top section, foil project cards,
+   glowing contact section
+   experienting with CSS filters, gradients, and animations
+   inspired by the upcoming "shaders" feature in CSS Houdini
+   and figma's shaders plugin
+    */
+
+
+/* ---------- velvet top section ---------- */
+
+.headerwrap {
+    overflow: hidden;
+}
+
+
+/* moving burgundy light behind the name and photo */
+
+.headerwrap::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(40% 35% at 30% 40%, rgba(123, 45, 79, 0.55), transparent 70%), radial-gradient(35% 30% at 70% 60%, rgba(92, 29, 43, 0.7), transparent 70%), radial-gradient(30% 25% at 55% 30%, rgba(176, 76, 99, 0.3), transparent 70%);
+    filter: blur(40px);
+    /* fades the velvet out toward the bottom so there's no hard edge */
+    -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent 72%);
+    mask-image: linear-gradient(to bottom, black 40%, transparent 72%);
+    animation: velvet 16s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes velvet {
+    0% {
+        transform: translate(0%, 0%) rotate(0deg);
+    }
+    50% {
+        transform: translate(6%, -4%) rotate(8deg);
+    }
+    100% {
+        transform: translate(-5%, 5%) rotate(-6deg);
+    }
+}
+
+
+/* keep the content above the velvet */
+
+.homewrap,
+.divider {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ---------- foil shimmer on project cards ---------- */
+
+.project_img {
+    position: relative;
+}
+
+
+/* shine that sweeps across each card (sits on top of the picture) */
+
+.project_img::after {
+    content: "";
+    position: absolute;
+    top: -60%;
+    left: -60%;
+    width: 220%;
+    height: 220%;
+    background: linear-gradient(115deg, transparent 35%, rgba(204, 120, 140, 0.25) 44%, rgba(240, 200, 210, 0.3) 50%, rgba(176, 76, 99, 0.25) 56%, transparent 65%);
+    transform: translateX(-60%);
+    transition: transform 1s ease;
+    pointer-events: none;
+}
+
+
+/* the shine slides across when you hover a card */
+
+.project_box:hover .project_img::after {
+    transform: translateX(40%);
+}
+
+
+/* ---------- glowing contact section ---------- */
+
+.contactwrap {
+    position: relative;
+    overflow: hidden;
+}
+
+
+/* soft rose glow that pulses like candlelight */
+
+.contactwrap::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 70%;
+    height: 140%;
+    background: radial-gradient(ellipse at center, rgba(176, 76, 99, 0.35), transparent 65%);
+    filter: blur(20px);
+    transform: translate(-50%, -50%);
+    animation: glow 4s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes glow {
+    0%,
+    100% {
+        opacity: 0.45;
+        transform: translate(-50%, -50%) scale(0.92);
+    }
+    50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.06);
+    }
+}
+
+
+/* keep the contact text and buttons above the glow */
+
+.contactwrap>* {
+    position: relative;
+}
+
+
+/* ---------- accessibility: turn off motion if the visitor prefers less ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+    .headerwrap::before,
+    .contactwrap::before {
+        animation: none;
+    }
+    .project_img::after {
+        transition: none;
+    }
+}
